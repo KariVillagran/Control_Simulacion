@@ -9,7 +9,7 @@ function [x1] = suma_raices (vector)
 	
 	% mientras status sea 1, el programa solicitara el vector en el formato solicitado
 	% cuando se ingrese el formato correspondiente, retornara el valor de la raiz de los tres elementos de mayor valor
-	while status == 0 
+	while status == 1 
 		if numel(a)>=3
 			x1 = sqrt(a(1)) + sqrt(a(2)) + sqrt(a(3))
 			status = 0
