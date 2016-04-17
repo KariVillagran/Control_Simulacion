@@ -1,6 +1,22 @@
 % SEGUNDA PARTE
 
 %               Método de Newton-Raphson
+%               Autor: Ana Villagran - Luis Guerra
+%               14-04-2016
+%				  implementacion recursiva
+function [xn1] = Newton_Raphson (polinomio_input, iteraciones_input, e_input,xn)
+    syms x;
+    xAux = xn - (subs(polinomio_input,xn)/subs(diff(polinomio_input,x),xn));
+        if abs((xAux-xn)/xAux) >= e_input && iteraciones_input > 0
+            xn1 = Newton_Raphson(polinomio_input,iteraciones_input-1,e_input,xAux);
+        else 
+            xOut = xn - (subs(polinomio_input,xn)/subs(diff(polinomio_input,x),xAux));
+            xn1 = xOut;
+            fprintf('raíz: %f', xOut);
+        end 
+end
+
+%               Método de Newton-Raphson
 %               Autor: Julio Echeverri
 %               30/12/2013
 %				  implementacion iterativa
@@ -33,38 +49,3 @@ tolerancia = 0.000001;
     
     end
 end
-
-
-
-%               Método de Newton-Raphson
-%               Autor: Ana Villagran - Luis Guerra
-%               14-04-2016
-%				  implementacion recursiva
-function [xn1] = Newton_Raphon (polinomio_input, iteraciones_input, e_input,xn)
-	syms x;
-	xn1 = xn - (subs(polinomio_input,xn)/subs(diff(polinomio_input,x),xn));
-		if abs((xn1-xn)/xn1) >= e_input && iteraciones_input > 0
-			xn1 = Newton_Raphon(polinomio_input,iteraciones_input-1,e_input,xn);
-		else 
-			xn1 = xn - (subs(polinomio_input,xn)/subs(diff(polinomio_input,x),xn));
-		end 
-end 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
